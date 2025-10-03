@@ -27,7 +27,7 @@
       align-items: center;
       padding: 10px 20px;
       position: relative;
-      z-index: 1002;
+      z-index: 300; /* header paling atas */
     }
 
     header h1 {
@@ -43,7 +43,7 @@
       font-size: 1.8rem;
       color: #fff;
       cursor: pointer;
-      z-index: 101;
+      z-index: 301; /* di atas nav */
       position: relative;
     }
 
@@ -51,7 +51,7 @@
     nav {
       display: flex;
       gap: 15px;
-      z-index: 100;
+      z-index: 200; /* dibawah tombol ☰ */
     }
 
     nav a {
@@ -65,9 +65,10 @@
       background: #555;
     }
 
+    /* Tombol ✖ */
     .close-menu {
       display: none;
-      position: absolute;
+      position: fixed; /* di luar nav */
       top: 15px;
       right: 15px;
       font-size: 1.8rem;
@@ -75,7 +76,7 @@
       background: none;
       border: none;
       cursor: pointer;
-      z-index: 102;
+      z-index: 302; /* di atas nav */
     }
 
     /* --- Main --- */
@@ -182,14 +183,17 @@
   <header>
     <h1>Teknologi Edukasi</h1>
     <button class="menu-toggle" aria-label="Buka menu">☰</button>
-    <nav>
-      <button class="close-menu" aria-label="Tutup menu">✖</button>
-      <a href="#home">Home</a>
-      <a href="#galeri">Galeri</a>
-      <a href="#tabel">Tabel</a>
-      <a href="#kontak">Kontak</a>
-    </nav>
   </header>
+
+  <!-- Tombol ✖ mobile di luar nav -->
+  <button class="close-menu" aria-label="Tutup menu">✖</button>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#tabel">Tabel</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
 
   <main>
     <section id="home">
@@ -267,11 +271,13 @@
     // buka menu
     toggle.addEventListener("click", () => {
       nav.classList.add("active");
+      closeBtn.style.display = "block"; // tombol ✖ muncul
     });
 
     // tutup menu
     closeBtn.addEventListener("click", () => {
       nav.classList.remove("active");
+      closeBtn.style.display = "none"; // tombol ✖ hilang
     });
 
     // tutup menu saat klik link & smooth scroll
@@ -284,6 +290,7 @@
           target.scrollIntoView({ behavior: "smooth" });
         }
         nav.classList.remove("active");
+        closeBtn.style.display = "none"; // tombol ✖ hilang
       });
     });
   </script>
