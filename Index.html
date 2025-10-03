@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teknologi Edukasi - Arduino</title>
+  <style>
+    /* --- Body & Global --- */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* --- Header --- */
+    header {
+      background: #333;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      position: relative;
+      z-index: 1002;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    /* tombol ☰ */
+    .menu-toggle {
+      display: none; /* default desktop */
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 1003;
+    }
+
+    /* --- Nav --- */
+    nav {
+      display: flex;
+      gap: 15px;
+      z-index: 1001;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      background: #555;
+    }
+
+    .close-menu {
+      display: none;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* --- Main --- */
+    main {
+      padding: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    article h2 {
+      margin-top: 0;
+    }
+
+    figure {
+      margin: 0;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    figcaption {
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    section {
+      margin-top: 40px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background: #eee;
+    }
+
+    footer {
+      background: #f1f1f1;
+      padding: 14px;
+      text-align: center;
+      color: #444;
+      margin-top: 30px;
+    }
+
+    /* --- Mobile --- */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        flex-direction: column;
+        background: #444;
+        position: fixed;
+        top: 0;
+        right: -220px;
+        height: 100%;
+        width: 200px;
+        padding-top: 60px;
+        transition: right 0.3s ease;
+        border-left: 2px solid #333;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      nav a {
+        display: block;
+        text-align: center;
+        padding: 15px;
+        border-bottom: 1px solid #555;
+        color: #fff;
+      }
+
+      .close-menu {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Teknologi Edukasi</h1>
+    <button class="menu-toggle" aria-label="Buka menu">☰</button>
+    <nav>
+      <button class="close-menu" aria-label="Tutup menu">✖</button>
+      <a href="#home">Home</a>
+      <a href="#galeri">Galeri</a>
+      <a href="#tabel">Tabel</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <article>
+        <h2>Pengenalan Arduino</h2>
+        <p>Arduino adalah platform elektronik open-source yang populer digunakan untuk membuat berbagai proyek otomatisasi dan Internet of Things (IoT). 
+        Dengan mikrokontroler dan bahasa pemrograman sederhana, Arduino memungkinkan siapa saja, baik pemula maupun profesional, untuk mengembangkan prototipe perangkat pintar.</p>
+        <p>Arduino dapat diprogram untuk mengendalikan LED, sensor, motor, hingga terhubung ke internet. Platform ini sering digunakan dalam bidang pendidikan, riset, dan juga industri kreatif karena fleksibilitas serta komunitasnya yang besar.</p>
+      </article>
+    </section>
+
+    <section id="galeri">
+      <h2>Jenis Arduino</h2>
+      <figure>
+        <img src="arduino-uno.png" alt="Arduino Uno">
+        <figcaption>Arduino Uno</figcaption>
+
+        <img src="arduino-mega.png" alt="Arduino Mega">
+        <figcaption>Arduino Mega</figcaption>
+
+        <img src="arduino-nano.png" alt="Arduino Nano">
+        <figcaption>Arduino Nano</figcaption>
+      </figure>
+    </section>
+
+    <section id="tabel">
+      <h3>Perbandingan Board Arduino</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Board</th>
+              <th>Fitur Utama</th>
+              <th>Kegunaan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Arduino Uno</td>
+              <td>Mikrokontroler ATmega328, 14 pin digital</td>
+              <td>Proyek pemula, edukasi dasar</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Arduino Mega</td>
+              <td>54 pin digital, memori lebih besar</td>
+              <td>Proyek kompleks, robotika</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Arduino Nano</td>
+              <td>Ukuran kecil, portabel, 22 pin digital</td>
+              <td>Proyek IoT, perangkat wearable</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="kontak">
+      <h2>Kontak</h2>
+      <p><strong>Email:</strong> stefanuskrisna@gmail.com</p>
+      <p><strong>Tel:</strong> +62-8xxx-xxxx-xxx</p>
+    </section>
+  </main>
+
+  <script>
+    const toggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("nav");
+    const closeBtn = document.querySelector(".close-menu");
+    const navLinks = document.querySelectorAll("nav a");
+
+    // buka menu
+    toggle.addEventListener("click", () => {
+      nav.classList.add("active");
+    });
+
+    // tutup menu
+    closeBtn.addEventListener("click", () => {
+      nav.classList.remove("active");
+    });
+
+    // tutup menu saat klik link & scroll smooth
+    navLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute("href");
+        const target = document.querySelector(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+        nav.classList.remove("active");
+      });
+    });
+  </script>
+</body>
+</html>
