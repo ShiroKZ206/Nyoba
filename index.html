@@ -35,47 +35,55 @@
       font-size: 1.5rem;
     }
 
-    /* tombol ☰ */
-    .menu-toggle {
-      display: none; /* default desktop */
-      background: none;
-      border: none;
-      font-size: 1.8rem;
-      color: #fff;
-      cursor: pointer;
-      z-index: 1003;
-    }
+    /* Tombol menu */
+.menu-toggle {
+  display: none; /* default desktop */
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 101; /* di atas header */
+  position: relative;
+}
 
-    /* --- Nav --- */
-    nav {
-      display: flex;
-      gap: 15px;
-      z-index: 1001;
-    }
+/* Mobile */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 5px;
-    }
+  nav {
+    flex-direction: column;
+    background: #444;
+    position: fixed;
+    top: 0;
+    right: -220px; /* tersembunyi */
+    height: 100%;
+    width: 200px;
+    padding-top: 60px;
+    transition: right 0.3s ease;
+    border-left: 2px solid #333;
+    z-index: 100; /* dibawah tombol ☰ */
+  }
 
-    nav a:hover {
-      background: #555;
-    }
+  nav.active {
+    right: 0;
+  }
 
-    .close-menu {
-      display: none;
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: none;
-      border: none;
-      font-size: 1.8rem;
-      color: #fff;
-      cursor: pointer;
-    }
-
+  .close-menu {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.8rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 102; /* di atas nav */
+  }
+}
     /* --- Main --- */
     main {
       padding: 20px;
