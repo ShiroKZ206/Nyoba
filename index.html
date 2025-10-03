@@ -35,55 +35,49 @@
       font-size: 1.5rem;
     }
 
-    /* Tombol menu */
-.menu-toggle {
-  display: none; /* default desktop */
-  background: none;
-  border: none;
-  font-size: 1.8rem;
-  color: #fff;
-  cursor: pointer;
-  z-index: 101; /* di atas header */
-  position: relative;
-}
+    /* Tombol ☰ */
+    .menu-toggle {
+      display: none; /* default desktop */
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 101;
+      position: relative;
+    }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
+    /* --- Nav --- */
+    nav {
+      display: flex;
+      gap: 15px;
+      z-index: 100;
+    }
 
-  nav {
-    flex-direction: column;
-    background: #444;
-    position: fixed;
-    top: 0;
-    right: -220px; /* tersembunyi */
-    height: 100%;
-    width: 200px;
-    padding-top: 60px;
-    transition: right 0.3s ease;
-    border-left: 2px solid #333;
-    z-index: 100; /* dibawah tombol ☰ */
-  }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+    }
 
-  nav.active {
-    right: 0;
-  }
+    nav a:hover {
+      background: #555;
+    }
 
-  .close-menu {
-    display: block;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 1.8rem;
-    color: #fff;
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 102; /* di atas nav */
-  }
-}
+    .close-menu {
+      display: none;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.8rem;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 102;
+    }
+
     /* --- Main --- */
     main {
       padding: 20px;
@@ -158,7 +152,7 @@
         background: #444;
         position: fixed;
         top: 0;
-        right: -220px;
+        right: -220px; /* tersembunyi */
         height: 100%;
         width: 200px;
         padding-top: 60px;
@@ -280,7 +274,7 @@
       nav.classList.remove("active");
     });
 
-    // tutup menu saat klik link & scroll smooth
+    // tutup menu saat klik link & smooth scroll
     navLinks.forEach(link => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
